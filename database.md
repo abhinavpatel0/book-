@@ -99,7 +99,7 @@ Concurrency control is critical for maintaining data integrity and performance:
 - Efficient for analytical workloads and operations on specific fields.
 
 **Example:**
-- Logical Table:
+
 | ID | Symbol | Date       | Price    |
 |----|--------|------------|----------|
 | 1  | DOW    | 08 Aug 2018| 24,314.65|
