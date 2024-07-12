@@ -1,11 +1,11 @@
 
-Database Management Systems (DBMS) are complex software systems designed to manage databases effectively. Their architecture varies, but common themes exist across different systems. Here's a detailed explanation of the key components and their roles within a typical DBMS architecture:
+Database Management Systems (DBMS) are complex software systems designed to manage databases effectively. Their architecture varies, but common themes exist across different systems. Here are explanation of the key components and their roles within a typical DBMS architecture:
 
 ### 1. Client/Server Model
 
 DBMS architecture typically follows a client/server model:
-- **Servers:** Database system instances (nodes) that store and manage data.
-- **Clients:** Application instances that request data from the servers.
+- **Servers:** Database system are  nodes that store and manage data.
+- **Clients:** Application  that request data from the servers.
 
 ### 2. Transport Subsystem
 
