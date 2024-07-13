@@ -1,4 +1,3 @@
-
 Database Management Systems (DBMS) are complex software systems designed to manage databases effectively. Their architecture varies, but common themes exist across different systems. Here are explanation of the key components and their roles within a typical DBMS architecture:
 
 ### 1. Client/Server Model
@@ -334,4 +333,36 @@ A hybrid approach can be used where indexes store both file offsets and primary 
   - First, check if the file offset is still valid.
   - If not, perform a lookup using the primary key and update the index with the new offset.
   - Combines the benefits of direct reference and indirection, providing flexibility and efficiency.
+  
+### Key Concepts in Storage Structures
+
+ buffering, mutability (or immutability), and ordering. These factors greatly influence the efficiency, performance, and behavior of the storage engine.
+
+#### Buffering
+
+- **Definition**: Buffering refers to the practice of collecting data in memory before writing it to disk. 
+- **Purpose**: Helps to optimize I/O operations by reducing the frequency of disk writes and ensuring data is written in full blocks.
+- **Application in Storage Structures**: 
+  - **B-Trees**: Often use in-memory buffers to amortize I/O costs, allowing multiple updates to be combined before writing to disk.
+  - **LSM Trees**: Use a different approach by buffering updates in memory and periodically flushing them to disk in bulk, enhancing write performance.
+
+#### Mutability (or Immutability)
+
+- **Definition**: This refers to whether data files are modified in place or if updates are appended to the end of the file.
+- **Mutable Structures**: Modify data directly in their existing location on disk.
+- **Immutable Structures**: Write changes as new entries at the end of the file without altering the existing data.
+  - **Append-Only**: New data is appended, making the structure inherently immutable.
+  - **Copy-on-Write**: Updates are written to a new location, and the old data remains unchanged until it is safe to delete.
+  - **Example Structures**:
+   - **Immutable**: LSM Trees and Bw-Trees.
+   - **Mutable**: Traditional B-Trees.
+
+#### Ordering
+
+- **Definition**: Refers to whether the data records are stored on disk in a sorted order based on their keys.
+- **Ordered Storage**: Data is stored in a way that maintains the key order, allowing efficient range scans and quick access to a series of contiguous records.
+- **Unordered Storage**: Data is stored in the order of insertion or some other non-key order, which can optimize write operations but may slow down read operations.
+  - **Examples**:
+   - **Ordered**: B-Trees, where keys are stored in a sorted order, facilitating efficient range queries.
+   - **Unordered**: Bitcask and WiscKey, where data is written in an append-only manner, prioritizing write performance over ordered storage.
 
